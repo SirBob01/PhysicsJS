@@ -10,12 +10,14 @@ function Vector(x, y) {
 
 function AABB(x, y, width, height) {
 	this.pos = new Vector(x, y)
+        this.vel = new Vector(0, 0)
 	this.width = width
 	this.height = height
 }
 
 function Circle(x, y, r) {
 	this.pos = new Vector(x, y)
+        this.vel = new Vector(0, 0)
 	this.r = r
 }
 
@@ -27,7 +29,7 @@ function collideAABB(a, b) {
 }
 
 function collideCircle(a, b) {
-	vec = a.pos.sub(b.vector)
+	vec = a.pos.sub(b.pos)
 	d = vec.magnitudeSquared()
 	if(d < (a.r*a.r + b.r*b.r)) {
 		return true
