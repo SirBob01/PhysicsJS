@@ -9,25 +9,25 @@ function Vector(x, y) {
 }
 
 function AABB(x, y, width, height) {
-	this.vector = new Vector(x, y)
+	this.pos = new Vector(x, y)
 	this.width = width
 	this.height = height
 }
 
 function Circle(x, y, r) {
-	this.vector = new Vector(x, y)
+	this.pos = new Vector(x, y)
 	this.r = r
 }
 
 function collideAABB(a, b) {
-	if(a.vector.x + a.width/2.0 < b.vector.x - b.width/2.0 && a.vector.y + a.height/2.0 < b.vector.y - b.height/2.0) {
+	if(a.pos.x + a.width/2.0 < b.pos.x - b.width/2.0 && a.pos.y + a.height/2.0 < b.pos.y - b.height/2.0) {
 		return true
 	}
 	return false
 }
 
 function collideCircle(a, b) {
-	vec = a.vector.sub(b.vector)
+	vec = a.pos.sub(b.vector)
 	d = vec.magnitudeSquared()
 	if(d < (a.r*a.r + b.r*b.r)) {
 		return true
